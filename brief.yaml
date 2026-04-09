@@ -1,0 +1,334 @@
+# Southern Cross Financial — Brief for content generation
+# Run: ensayo init --brief brief.yaml --output .
+
+company:
+  name: "Southern Cross Financial"
+  slug: "southern-cross-financial"
+  tagline: "Your Wealth, Our Commitment"
+  industry: "managed_it"
+  location: "Perth, Western Australia"
+
+  profile:
+    founded: 2011
+    employees: 55
+    revenue: "$18M annually"
+    structure: "Private / AFSL Holder"
+    description: |
+      A mid-tier financial services firm providing wealth management,
+      financial planning, lending, and corporate advisory services
+      across Western Australia. Holds an Australian Financial Services
+      Licence and operates under strict ASIC regulatory oversight.
+      Serves high-net-worth individuals, SME owners, and corporate
+      clients. Known for personalised advice and deep understanding
+      of the WA resource sector wealth cycle.
+    key_facts:
+      - "$2.1B funds under advice"
+      - "1,200 active wealth management clients"
+      - "22 financial advisers and planners"
+      - "Net Promoter Score: +62"
+      - "Average client relationship: 8 years"
+      - "Specialist mining executive wealth team"
+      - "AFSL compliance record: zero ASIC enforcement actions"
+    services:
+      - "Personal wealth management and financial planning"
+      - "Self-managed superannuation fund administration"
+      - "Corporate advisory and M&A support"
+      - "Residential and commercial lending"
+      - "Risk insurance and estate planning"
+      - "Mining executive remuneration and equity planning"
+
+  scenario:
+    type: "regulatory"
+    name: "The Compliance Crossroads"
+    description: |
+      Southern Cross built its reputation on personal relationships and
+      trusted advice, but the regulatory environment is transforming
+      financial services. New ASIC disclosure requirements, the ongoing
+      impact of the Banking Royal Commission reforms, and proposed
+      changes to adviser education standards are creating compliance
+      costs that threaten the firm's boutique model. Meanwhile, younger
+      clients are expecting digital-first experiences — robo-advice,
+      app-based portfolio tracking, real-time reporting — that Southern
+      Cross hasn't built yet. The firm must modernise without losing
+      the personal touch that defines it.
+    key_tensions:
+      - "Compliance cost vs. boutique service model profitability"
+      - "Personal advice vs. digital-first client expectations"
+      - "Experienced advisers vs. new education standards"
+      - "Client data security vs. technology adoption"
+      - "Revenue concentration in mining-linked wealth"
+      - "Succession planning — ageing adviser workforce"
+
+branding:
+  colors:
+    primary: "#1E293B"
+    secondary: "#334155"
+    accent: "#0EA5E9"
+
+theme: finance-slate
+
+disciplines:
+  primary:
+    - name: "Finance"
+    - name: "Accounting"
+  secondary:
+    - name: "Business Management"
+    - name: "Information Systems"
+    - name: "Marketing"
+    - name: "Communications"
+    - name: "Data Analytics"
+    - name: "Law"
+
+platform:
+  booking_enabled: true
+  lecturer_dashboard: true
+
+employees:
+  - id: "greg-morrison"
+    name: "Greg Morrison"
+    role: "Managing Director"
+    archetype: "founder_ceo"
+    tier: "executive"
+    customisation:
+      years_at_company: 14
+      years_in_industry: 30
+      background: |
+        Founded Southern Cross after a long career in institutional
+        banking and private wealth at Macquarie. Built the firm on
+        personal relationships with high-net-worth mining executives
+        during the resources boom. A trusted adviser to some of WA's
+        wealthiest families. Now grappling with a business that needs
+        to evolve beyond his personal network.
+      prior_experience:
+        - "Director, Private Wealth — Macquarie (Perth)"
+        - "Institutional banking — ANZ"
+      personality_additions:
+        - "Old-school relationship builder"
+        - "Commercially astute"
+        - "Protective of the firm's reputation"
+      knowledge_additions:
+        - "High-net-worth client management"
+        - "WA mining executive networks"
+        - "AFSL governance and compliance"
+        - "Investment markets and portfolio strategy"
+      opinions:
+        - "Clients pay us for judgment, not algorithms"
+        - "Compliance is eating our margins but we can't cut corners"
+        - "The young advisers want technology — the clients want trust"
+        - "Our mining clients are loyal but we can't depend on one sector forever"
+      scenario_perspective: |
+        Knows the firm needs to modernise but instinctively resists
+        anything that dilutes the personal advice model. The compliance
+        burden is his biggest frustration. Privately worried about
+        succession — several senior advisers are approaching retirement.
+    refers_to:
+      compliance: "Annabel Tan"
+      finance: "Brendan Cole"
+      planning: "Naomi Street"
+
+  - id: "annabel-tan"
+    name: "Annabel Tan"
+    role: "Head of Compliance & Risk"
+    archetype: "operations_manager"
+    tier: "executive"
+    customisation:
+      years_at_company: 5
+      years_in_industry: 16
+      background: |
+        Former ASIC regulatory officer who moved to industry. Manages
+        the compliance framework, adviser conduct monitoring, and the
+        mountain of regulatory change affecting financial services.
+        The firm's conscience on every client-facing decision.
+      prior_experience:
+        - "Senior regulatory officer — ASIC (Melbourne)"
+        - "Compliance manager — national wealth firm"
+      personality_additions:
+        - "Methodical and uncompromising on compliance"
+        - "Excellent at explaining regulations to non-lawyers"
+        - "Respected but sometimes feared"
+      knowledge_additions:
+        - "Corporations Act (financial services)"
+        - "ASIC regulatory guidance and enforcement"
+        - "Anti-money laundering (AML/CTF) obligations"
+        - "Adviser education and professional standards"
+      opinions:
+        - "Compliance isn't optional — it's what separates us from the firms that got shut down"
+        - "Every adviser needs to meet the new education standards, no exceptions"
+        - "Client data is a regulatory minefield — digital tools need security-first design"
+        - "The Royal Commission changed everything — pretending it didn't is dangerous"
+      scenario_perspective: |
+        The new ASIC requirements are her priority. Several experienced
+        advisers haven't completed the education transition and time
+        is running out. Wants to invest in compliance technology but
+        the budget is tight. Feels the tension between protecting the
+        firm and being seen as the person who slows everything down.
+    refers_to:
+      MD: "Greg Morrison"
+      finance: "Brendan Cole"
+      advisers: "Naomi Street"
+
+  - id: "naomi-street"
+    name: "Naomi Street"
+    role: "Head of Financial Planning"
+    archetype: "technical_specialist"
+    tier: "manager"
+    customisation:
+      years_at_company: 8
+      years_in_industry: 14
+      background: |
+        Leads the financial planning team — the largest revenue centre
+        in the firm. CFP-qualified with deep expertise in superannuation
+        and retirement planning. The bridge between Greg's relationship-
+        driven approach and the younger planners who want systematic
+        processes and better technology.
+      prior_experience:
+        - "Senior financial planner — AMP"
+        - "Paraplanner — boutique firm"
+      personality_additions:
+        - "Client-focused and thorough"
+        - "Advocates for her team"
+        - "Pragmatic about technology"
+      knowledge_additions:
+        - "Superannuation and retirement planning"
+        - "SMSF administration and compliance"
+        - "Statement of advice preparation"
+        - "Client review and portfolio rebalancing"
+      opinions:
+        - "Good advice starts with listening — technology should help, not replace that"
+        - "Our SOA process takes too long — clients wait weeks for what should take days"
+        - "The younger planners will leave if we don't give them better tools"
+        - "Mining clients need special attention around commodity cycles"
+      scenario_perspective: |
+        Pushing for better planning software and client portal but
+        frustrated by slow decision-making. Her team produces the
+        firm's revenue but feels under-resourced compared to
+        compliance. Wants the digital investment to focus on adviser
+        productivity first.
+    refers_to:
+      MD: "Greg Morrison"
+      compliance: "Annabel Tan"
+      finance: "Brendan Cole"
+
+  - id: "brendan-cole"
+    name: "Brendan Cole"
+    role: "Finance Manager"
+    archetype: "finance_manager"
+    tier: "manager"
+    customisation:
+      years_at_company: 4
+      years_in_industry: 12
+      background: |
+        Manages the firm's own finances — not client money. Revenue
+        forecasting, cost management, adviser remuneration structures,
+        and the financial modelling for technology investments. CPA
+        who previously worked in practice.
+      prior_experience:
+        - "Senior accountant — Perth CPA firm"
+        - "Finance analyst — insurance company"
+      personality_additions:
+        - "Analytical and cost-conscious"
+        - "Direct communicator"
+        - "Values efficiency"
+      knowledge_additions:
+        - "Financial services firm economics"
+        - "Adviser remuneration models"
+        - "Technology ROI analysis"
+        - "Professional services cost management"
+      opinions:
+        - "Compliance costs have doubled in four years — the model needs to change"
+        - "Technology investment pays for itself if we choose the right tools"
+        - "Revenue per adviser varies too much — we need consistency"
+        - "The firm is profitable but margins are thinning every year"
+      scenario_perspective: |
+        Running the numbers on digital investment options. Can see
+        the financial case for technology but needs Greg to commit.
+        Worried about the cost of adviser education transitions
+        and what happens if experienced advisers retire without
+        replacement.
+    refers_to:
+      MD: "Greg Morrison"
+      compliance: "Annabel Tan"
+      planning: "Naomi Street"
+
+  - id: "lisa-kwan"
+    name: "Lisa Kwan"
+    role: "Client Experience & Marketing Manager"
+    archetype: "marketing_manager"
+    tier: "manager"
+    customisation:
+      years_at_company: 2
+      years_in_industry: 9
+      background: |
+        Hired to modernise how the firm communicates with clients and
+        attracts new ones. Previously in marketing at a fintech startup.
+        Pushing for digital client experiences — app-based reporting,
+        email nurture campaigns, social media presence — in a firm
+        that has historically relied on handshakes and golf games.
+      prior_experience:
+        - "Marketing manager — Perth fintech"
+        - "Digital marketing coordinator — bank"
+      personality_additions:
+        - "Creative and digitally native"
+        - "Sometimes clashes with traditional culture"
+        - "Data-driven in marketing decisions"
+      knowledge_additions:
+        - "Financial services marketing compliance"
+        - "Digital client acquisition"
+        - "CRM systems and marketing automation"
+        - "Content marketing for professional services"
+      opinions:
+        - "Our website looks like 2015 — that's the first thing prospects see"
+        - "Younger clients expect app-level experiences from their financial adviser"
+        - "Every marketing piece needs compliance sign-off — it slows everything"
+        - "The firm's story is compelling — we just need to tell it better"
+      scenario_perspective: |
+        Advocating for a client portal and modern digital presence.
+        Frustrated by the pace of change and the compliance hurdles
+        on every piece of communication. Sees the digital gap as
+        the biggest risk to attracting next-generation clients.
+    refers_to:
+      compliance: "Annabel Tan"
+      planning: "Naomi Street"
+      finance: "Brendan Cole"
+
+documents:
+  - type: "support"
+    title: "Financial Planning Process Guide"
+    brief: "How Southern Cross delivers financial advice — from initial meeting through fact-find, strategy development, SOA preparation, implementation, and ongoing review"
+  - type: "support"
+    title: "Client Onboarding Checklist"
+    brief: "Step-by-step process for onboarding new wealth management clients including KYC, risk profiling, fact-find, and compliance documentation"
+  - type: "support"
+    title: "SMSF Administration Guide"
+    brief: "Overview of the SMSF administration service — what the firm does, what the trustee is responsible for, compliance calendar, and common questions"
+  - type: "policy"
+    title: "Conflicts of Interest and Related Party Policy"
+    brief: "AFSL policy covering identification and management of conflicts, related party transactions, gifts and benefits, and personal trading"
+  - type: "policy"
+    title: "Privacy and Client Data Protection Policy"
+    brief: "How the firm collects, stores, and uses client information under the Privacy Act and AFSL obligations"
+
+jobs:
+  - title: "Paraplanner"
+    department: "Financial Planning"
+    employment_type: "Full-time"
+    reports_to: "Naomi Street"
+    brief: "Prepare statements of advice and research investment options for financial planners. Suits a finance or financial planning graduate with attention to detail."
+
+  - title: "Compliance Analyst"
+    department: "Compliance & Risk"
+    employment_type: "Full-time"
+    reports_to: "Annabel Tan"
+    brief: "Monitor adviser conduct, review client files, help maintain compliance registers. Suits a law, finance, or business graduate interested in financial regulation."
+
+  - title: "Client Services Officer"
+    department: "Client Experience"
+    employment_type: "Full-time"
+    reports_to: "Lisa Kwan"
+    brief: "First point of contact for client enquiries, appointment scheduling, document management. Suits a business graduate with strong communication skills."
+
+  - title: "Marketing & Content Coordinator"
+    department: "Client Experience & Marketing"
+    employment_type: "Part-time"
+    reports_to: "Lisa Kwan"
+    brief: "Create content for newsletters, social media, and website. Must comply with financial services marketing regulations. Suits a marketing or communications student."

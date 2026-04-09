@@ -1,0 +1,18 @@
+branding:
+  accent: '#0EA5E9'
+  primary: '#1E293B'
+  secondary: '#334155'
+careers:
+  label: Join Our Team
+  show_apply_form: true
+  submit_url: ''
+chatbot:
+  booking_api: ''
+  booking_enabled: true
+  mode: llm
+  platform: anythingllm
+company:
+  name: Southern Cross Financial
+  slug: southern-cross-financial
+  tagline: Your Wealth, Our Commitment
+theme: finance-slate
