@@ -1,4 +1,3 @@
-```yaml
 name: Lisa Kwan
 slug: lisa-kwan
 role: Client Experience & Marketing Manager
