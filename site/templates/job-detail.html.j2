@@ -1,0 +1,73 @@
+{% extends "base.html.j2" %}
+
+{% block title %}{{ job.title }} — Southern Cross Financial{% endblock %}
+
+{% block content %}
+<section class="section-pad">
+    <div class="wrap-narrow">
+        <p class="eyebrow"><a href="/careers.html" style="color: var(--sc-brass-deep);">← All positions</a></p>
+        <h1 style="margin-bottom: var(--sc-px-4); font-style: italic;">{{ job.title }}</h1>
+        <p class="lead" style="font-size: 1.2rem;">{{ job.brief or job.summary or "" }}</p>
+
+        <hr class="rule-double" style="max-width: 200px; margin: var(--sc-px-6) 0;">
+
+        <div class="services-list" style="border: none;">
+            <div class="service-row" style="border: none; padding: var(--sc-px-2) 0;">
+                <div class="service-num" style="font-size: 1rem;">·</div>
+                <div>
+                    <div class="service-title" style="font-size: 1.05rem;">Department</div>
+                </div>
+                <div class="service-meta">{{ job.department or "—" }}</div>
+            </div>
+            <div class="service-row" style="border: none; padding: var(--sc-px-2) 0;">
+                <div class="service-num" style="font-size: 1rem;">·</div>
+                <div>
+                    <div class="service-title" style="font-size: 1.05rem;">Employment type</div>
+                </div>
+                <div class="service-meta">{{ job.employment_type or "Full-time" }}</div>
+            </div>
+            {% if job.reports_to %}
+            <div class="service-row" style="border: none; padding: var(--sc-px-2) 0;">
+                <div class="service-num" style="font-size: 1rem;">·</div>
+                <div>
+                    <div class="service-title" style="font-size: 1.05rem;">Reports to</div>
+                </div>
+                <div class="service-meta">{{ job.reports_to }}</div>
+            </div>
+            {% endif %}
+            <div class="service-row" style="border: none; padding: var(--sc-px-2) 0;">
+                <div class="service-num" style="font-size: 1rem;">·</div>
+                <div>
+                    <div class="service-title" style="font-size: 1.05rem;">Location</div>
+                </div>
+                <div class="service-meta">Perth, Western Australia</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-pad" style="background: var(--sc-bg-2); border-top: 1px solid var(--sc-line); border-bottom: 1px solid var(--sc-line);">
+    <div class="wrap-narrow">
+        {% if job.description %}
+        <article class="prose">
+            {{ job.description | markdown }}
+        </article>
+        {% endif %}
+    </div>
+</section>
+
+<section class="invitation">
+    <div class="invitation-inner">
+        <span class="label">/&nbsp;&nbsp;If this position suits you&nbsp;&nbsp;/</span>
+        <h2>We would like to hear from you.</h2>
+        <p>Submit your CV and a short cover letter. We read every application and respond personally within five business days.</p>
+        <div class="hero-cta">
+            {% if company_url %}
+            <a href="{{ company_url }}" class="btn btn-brass btn-arrow">Apply via WorkReady</a>
+            {% else %}
+            <a href="/contact.html" class="btn btn-brass btn-arrow">Get in touch</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

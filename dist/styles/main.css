@@ -1,0 +1,1294 @@
+/*
+ * Southern Cross Financial — The Ledger
+ * Classical, formal, restrained aesthetic for a boutique wealth firm.
+ *
+ * Direction:
+ *   - Ivory background — like fine stationery
+ *   - Deep midnight navy primary, antique brass accent
+ *   - Playfair Display (high-contrast classical serif) for display
+ *   - Inter for body, set quietly with tight tracking
+ *   - Real small caps (font-feature-settings) for labels
+ *   - Tabular figures for all numbers
+ *   - Double horizontal rules under headings
+ *   - Centred, symmetric layouts in places — title-page formal
+ *   - No grids, no dashboards, no marquees — quiet and considered
+ */
+
+/* ============================================================
+   FONT IMPORTS
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+
+:root {
+    /* Palette — The Ledger */
+    --sc-bg: #fcfaf5;             /* warm ivory */
+    --sc-bg-2: #f5f1e8;           /* deeper ivory */
+    --sc-bg-3: #ebe5d3;           /* aged paper */
+    --sc-bg-deep: #0c1f3d;        /* midnight navy */
+    --sc-bg-deep-2: #142c52;      /* lifted navy */
+
+    --sc-line: #d8d2bf;            /* soft rule */
+    --sc-line-2: #b8ad8d;          /* stronger rule */
+    --sc-line-deep: #1f3354;       /* on dark surfaces */
+
+    --sc-text: #0c1f3d;            /* primary ink — same as bg-deep */
+    --sc-text-muted: #4a5468;      /* slate */
+    --sc-text-dim: #7b8294;        /* soft slate */
+    --sc-text-inv: #fcfaf5;        /* on dark surfaces */
+
+    --sc-navy: #0c1f3d;            /* primary navy */
+    --sc-navy-deep: #061224;       /* deepest */
+    --sc-brass: #a8843a;            /* antique brass */
+    --sc-brass-deep: #7d6122;       /* deep brass */
+    --sc-brass-soft: #d4b87a;       /* light brass / champagne */
+    --sc-oxblood: #6b1f1f;          /* deep oxblood */
+    --sc-cream: #f5e9c8;            /* fine paper */
+
+    --sc-success: #2e6b3e;
+    --sc-warn: #a86b1f;
+    --sc-danger: #6b1f1f;
+
+    /* Typography */
+    --sc-font-display: 'Playfair Display', 'Libre Caslon Text', Georgia, serif;
+    --sc-font-body: 'Inter', system-ui, sans-serif;
+    --sc-font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+    /* Spacing */
+    --sc-px-1: 0.25rem;
+    --sc-px-2: 0.5rem;
+    --sc-px-3: 1rem;
+    --sc-px-4: 1.5rem;
+    --sc-px-5: 2rem;
+    --sc-px-6: 3rem;
+    --sc-px-8: 5rem;
+    --sc-px-10: 8rem;
+
+    --sc-max: 1180px;
+    --sc-max-narrow: 720px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--sc-font-body);
+    background: var(--sc-bg);
+    color: var(--sc-text);
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    /* Tabular numerals everywhere — like a stockbroker's ledger */
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "kern", "liga", "tnum";
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img, svg {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+::selection {
+    background: var(--sc-brass-soft);
+    color: var(--sc-navy);
+}
+
+/* ============================================================
+   TYPOGRAPHY — classical didone-leaning serif
+   ============================================================ */
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--sc-font-display);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--sc-text);
+}
+
+h1 {
+    font-size: clamp(2.75rem, 7vw, 6.25rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+}
+h2 {
+    font-size: clamp(2rem, 4.5vw, 3.75rem);
+    font-weight: 400;
+}
+h3 { font-size: clamp(1.4rem, 2.5vw, 2.1rem); font-weight: 500; }
+h4 { font-size: 1.2rem; font-weight: 500; }
+
+/* Real small caps via OpenType */
+.smallcaps,
+.label {
+    font-family: var(--sc-font-body);
+    font-feature-settings: "smcp", "c2sc", "tnum";
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--sc-brass-deep);
+}
+
+.eyebrow {
+    font-family: var(--sc-font-body);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--sc-brass-deep);
+    font-weight: 600;
+    margin-bottom: var(--sc-px-3);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sc-px-3);
+}
+
+.eyebrow::before,
+.eyebrow::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--sc-brass);
+}
+
+.eyebrow.eyebrow-left { display: inline-flex; }
+.eyebrow.eyebrow-left::after { display: none; }
+.eyebrow.eyebrow-left::before { display: inline-block; }
+
+/* Default eyebrow only has lead-in rule */
+.eyebrow::after { display: none; }
+
+.lead {
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: var(--sc-text-muted);
+    max-width: 52ch;
+    font-weight: 400;
+    font-family: var(--sc-font-body);
+}
+
+.serif {
+    font-family: var(--sc-font-display);
+}
+
+.italic {
+    font-style: italic;
+}
+
+/* Double rule — classical printer's flourish */
+.rule-double {
+    border: none;
+    height: 5px;
+    border-top: 1px solid var(--sc-navy);
+    border-bottom: 1px solid var(--sc-navy);
+    margin: var(--sc-px-5) 0;
+}
+
+.rule-thin {
+    border: none;
+    height: 1px;
+    background: var(--sc-line);
+    margin: var(--sc-px-4) 0;
+}
+
+.rule-brass {
+    border: none;
+    height: 1px;
+    background: var(--sc-brass);
+    margin: var(--sc-px-4) 0;
+    width: 60px;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+
+.wrap {
+    max-width: var(--sc-max);
+    margin: 0 auto;
+    padding: 0 var(--sc-px-5);
+}
+
+.wrap-narrow {
+    max-width: var(--sc-max-narrow);
+    margin: 0 auto;
+    padding: 0 var(--sc-px-5);
+}
+
+section {
+    position: relative;
+}
+
+.section-pad { padding: var(--sc-px-10) 0; }
+.section-pad-sm { padding: var(--sc-px-6) 0; }
+
+.text-center { text-align: center; }
+
+/* ============================================================
+   HEADER / NAVIGATION
+   ============================================================ */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(252, 250, 245, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sc-line);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sc-px-3) var(--sc-px-5);
+    max-width: var(--sc-max);
+    margin: 0 auto;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--sc-px-3);
+    color: var(--sc-text);
+}
+
+/* Engraved monogram — SC with brass border */
+.brand-logo {
+    width: 48px;
+    height: 48px;
+    background: var(--sc-navy);
+    color: var(--sc-cream);
+    display: grid;
+    place-items: center;
+    font-family: var(--sc-font-display);
+    font-weight: 400;
+    font-size: 1.15rem;
+    position: relative;
+    letter-spacing: -0.04em;
+    font-style: italic;
+}
+
+.brand-logo::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid var(--sc-brass);
+    pointer-events: none;
+}
+
+.brand-name {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    font-family: var(--sc-font-display);
+}
+.brand-name strong {
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+.brand-name span {
+    font-family: var(--sc-font-body);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--sc-text-dim);
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.nav {
+    display: flex;
+    gap: var(--sc-px-5);
+    align-items: center;
+}
+
+.nav a {
+    font-family: var(--sc-font-body);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--sc-text-muted);
+    transition: color 0.15s;
+    position: relative;
+    padding: var(--sc-px-2) 0;
+    font-weight: 500;
+}
+
+.nav a:hover,
+.nav a.active {
+    color: var(--sc-navy);
+}
+
+.nav a.active::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 1px;
+    background: var(--sc-brass);
+}
+
+.nav-cta {
+    font-family: var(--sc-font-body);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    background: var(--sc-navy);
+    color: var(--sc-cream);
+    padding: var(--sc-px-2) var(--sc-px-4);
+    border: 1px solid var(--sc-navy);
+    transition: all 0.15s;
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-cta::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(212, 184, 122, 0.4);
+    pointer-events: none;
+    transition: border-color 0.15s;
+}
+
+.nav-cta:hover {
+    background: var(--sc-navy-deep);
+}
+.nav-cta:hover::before {
+    border-color: var(--sc-brass);
+}
+
+/* ============================================================
+   ANNOUNCEMENT BAR — broadsheet masthead feel
+   ============================================================ */
+
+.masthead-bar {
+    background: var(--sc-navy);
+    color: var(--sc-cream);
+    padding: var(--sc-px-2) 0;
+    text-align: center;
+    font-family: var(--sc-font-display);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--sc-brass-deep);
+}
+
+.masthead-bar span {
+    color: var(--sc-brass-soft);
+}
+
+/* ============================================================
+   HERO — title-page formal
+   ============================================================ */
+
+.hero {
+    position: relative;
+    padding: var(--sc-px-10) 0 var(--sc-px-8);
+    background: var(--sc-bg);
+    text-align: center;
+    border-bottom: 1px solid var(--sc-line);
+}
+
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 600px;
+    height: 1px;
+    background: var(--sc-line);
+}
+
+.hero::before { top: 6%; }
+.hero::after { bottom: 6%; }
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 var(--sc-px-5);
+}
+
+.hero-eyebrow {
+    font-family: var(--sc-font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--sc-brass-deep);
+    font-weight: 600;
+    margin-bottom: var(--sc-px-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sc-px-3);
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background: var(--sc-brass);
+}
+
+/* Southern Cross star ornament */
+.hero-star {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto var(--sc-px-4);
+    color: var(--sc-brass);
+}
+
+.hero h1 {
+    margin-bottom: var(--sc-px-4);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.hero h1 .ampersand {
+    font-style: italic;
+    color: var(--sc-brass);
+    font-family: var(--sc-font-display);
+    padding: 0 var(--sc-px-2);
+}
+
+.hero-tagline {
+    font-size: 1.25rem;
+    color: var(--sc-text-muted);
+    max-width: 56ch;
+    margin: var(--sc-px-4) auto var(--sc-px-5);
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.hero-cta {
+    display: flex;
+    gap: var(--sc-px-3);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--sc-px-5);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sc-px-2);
+    font-family: var(--sc-font-body);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: var(--sc-px-3) var(--sc-px-5);
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+}
+
+.btn-primary {
+    background: var(--sc-navy);
+    color: var(--sc-cream);
+    border-color: var(--sc-navy);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(212, 184, 122, 0.4);
+    transition: border-color 0.15s;
+    pointer-events: none;
+}
+
+.btn-primary:hover {
+    background: var(--sc-navy-deep);
+}
+.btn-primary:hover::before {
+    border-color: var(--sc-brass);
+}
+
+.btn-brass {
+    background: var(--sc-brass);
+    color: var(--sc-navy);
+    border-color: var(--sc-brass);
+}
+
+.btn-brass:hover {
+    background: var(--sc-brass-deep);
+    color: var(--sc-cream);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--sc-navy);
+    border-color: var(--sc-line-2);
+}
+
+.btn-ghost:hover {
+    border-color: var(--sc-navy);
+    background: var(--sc-bg-2);
+}
+
+.btn-arrow::after {
+    content: '→';
+    margin-left: var(--sc-px-1);
+    transition: transform 0.2s;
+}
+
+.btn-arrow:hover::after {
+    transform: translateX(3px);
+}
+
+/* ============================================================
+   FIGURES BAND — annual report style
+   ============================================================ */
+
+.figures {
+    background: var(--sc-bg-2);
+    padding: var(--sc-px-8) 0;
+    border-top: 1px solid var(--sc-line);
+    border-bottom: 1px solid var(--sc-line);
+}
+
+.figures-inner {
+    max-width: var(--sc-max);
+    margin: 0 auto;
+    padding: 0 var(--sc-px-5);
+    text-align: center;
+}
+
+.figures-header {
+    margin-bottom: var(--sc-px-6);
+}
+
+.figures-header .label {
+    margin-bottom: var(--sc-px-2);
+    display: block;
+}
+
+.figures-header h2 {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.figures-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sc-px-4);
+    border-top: 1px solid var(--sc-line);
+    border-bottom: 1px solid var(--sc-line);
+    padding: var(--sc-px-5) 0;
+}
+
+.figure {
+    text-align: center;
+    padding: 0 var(--sc-px-4);
+    border-right: 1px solid var(--sc-line);
+}
+
+.figure:last-child {
+    border-right: none;
+}
+
+.figure-label {
+    font-family: var(--sc-font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--sc-text-dim);
+    margin-bottom: var(--sc-px-3);
+    font-weight: 600;
+}
+
+.figure-value {
+    font-family: var(--sc-font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    font-weight: 400;
+    color: var(--sc-navy);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums lining-nums;
+}
+
+.figure-suffix {
+    color: var(--sc-brass);
+    font-size: 0.65em;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.figure-foot {
+    font-family: var(--sc-font-display);
+    font-size: 0.85rem;
+    color: var(--sc-text-muted);
+    font-style: italic;
+    margin-top: var(--sc-px-2);
+}
+
+/* ============================================================
+   SECTION HEADERS — centred prospectus style
+   ============================================================ */
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--sc-px-6);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-header .eyebrow {
+    margin-bottom: var(--sc-px-3);
+}
+
+.section-header h2 {
+    margin-bottom: var(--sc-px-3);
+    font-style: italic;
+}
+
+.section-header .lead {
+    margin: 0 auto;
+}
+
+/* ============================================================
+   SERVICES TABLE — like an old prospectus
+   ============================================================ */
+
+.services-list {
+    max-width: 880px;
+    margin: 0 auto;
+    border-top: 1px solid var(--sc-navy);
+    border-bottom: 1px solid var(--sc-navy);
+}
+
+.service-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: var(--sc-px-5);
+    align-items: baseline;
+    padding: var(--sc-px-4) var(--sc-px-2);
+    border-bottom: 1px solid var(--sc-line);
+    transition: background 0.15s;
+}
+
+.service-row:last-child {
+    border-bottom: none;
+}
+
+.service-row:hover {
+    background: var(--sc-bg-2);
+}
+
+.service-num {
+    font-family: var(--sc-font-display);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--sc-brass);
+    font-variant-numeric: oldstyle-nums;
+}
+
+.service-title {
+    font-family: var(--sc-font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--sc-navy);
+    margin-bottom: var(--sc-px-1);
+}
+
+.service-desc {
+    color: var(--sc-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.service-meta {
+    font-family: var(--sc-font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--sc-brass-deep);
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   PEOPLE GRID — boardroom photographs
+   ============================================================ */
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sc-px-5);
+    max-width: var(--sc-max);
+    margin: 0 auto;
+}
+
+.person {
+    background: var(--sc-bg);
+    padding: var(--sc-px-5);
+    border: 1px solid var(--sc-line);
+    text-align: center;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.person::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid var(--sc-line);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.person:hover {
+    border-color: var(--sc-brass);
+}
+
+.person:hover::before {
+    border-color: var(--sc-brass);
+}
+
+.person-portrait {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--sc-bg-2);
+    margin: 0 auto var(--sc-px-4);
+    display: grid;
+    place-items: center;
+    font-family: var(--sc-font-display);
+    font-style: italic;
+    font-size: 2.4rem;
+    color: var(--sc-brass-deep);
+    border: 2px solid var(--sc-brass);
+    position: relative;
+}
+
+.person h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: var(--sc-px-1);
+}
+
+.person-role {
+    font-family: var(--sc-font-body);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--sc-brass-deep);
+    margin-bottom: var(--sc-px-3);
+    font-weight: 600;
+    font-variant-caps: all-small-caps;
+}
+
+.person-bio {
+    color: var(--sc-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    text-align: left;
+}
+
+/* ============================================================
+   STORY / SCENARIO BLOCK — letter from the chairman feel
+   ============================================================ */
+
+.chairman-letter {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--sc-bg);
+    border: 1px solid var(--sc-line);
+    padding: var(--sc-px-8);
+    position: relative;
+}
+
+.chairman-letter::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid var(--sc-line);
+    pointer-events: none;
+}
+
+.chairman-letter-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.chairman-letter .label {
+    display: block;
+    margin-bottom: var(--sc-px-3);
+    text-align: center;
+}
+
+.chairman-letter h3 {
+    font-size: 2.5rem;
+    margin-bottom: var(--sc-px-4);
+    text-align: center;
+    font-style: italic;
+}
+
+.chairman-letter > .chairman-letter-inner > p {
+    color: var(--sc-text);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: var(--sc-px-3);
+}
+
+/* Drop cap for first letter */
+.chairman-letter > .chairman-letter-inner > p:first-of-type::first-letter {
+    font-family: var(--sc-font-display);
+    font-size: 4.5em;
+    line-height: 0.85;
+    float: left;
+    padding: 8px 12px 0 0;
+    color: var(--sc-brass-deep);
+    font-weight: 500;
+    font-style: italic;
+}
+
+.tensions-list {
+    margin-top: var(--sc-px-5);
+    padding-top: var(--sc-px-5);
+    border-top: 1px solid var(--sc-line);
+}
+
+.tensions-list-header {
+    text-align: center;
+    margin-bottom: var(--sc-px-4);
+    font-family: var(--sc-font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--sc-text-muted);
+}
+
+.tensions-list ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sc-px-3);
+}
+
+.tensions-list li {
+    font-family: var(--sc-font-body);
+    font-size: 0.92rem;
+    color: var(--sc-text);
+    padding: var(--sc-px-2) 0 var(--sc-px-2) var(--sc-px-4);
+    border-left: 2px solid var(--sc-brass);
+    line-height: 1.55;
+}
+
+.signature {
+    text-align: right;
+    margin-top: var(--sc-px-5);
+    padding-top: var(--sc-px-4);
+    border-top: 1px solid var(--sc-line);
+}
+
+.signature-name {
+    font-family: var(--sc-font-display);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--sc-navy);
+}
+
+.signature-role {
+    font-family: var(--sc-font-body);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--sc-text-dim);
+    font-weight: 600;
+    margin-top: var(--sc-px-1);
+}
+
+/* ============================================================
+   INVITATION (CTA banner — formal)
+   ============================================================ */
+
+.invitation {
+    background: var(--sc-navy);
+    color: var(--sc-cream);
+    padding: var(--sc-px-10) 0;
+    text-align: center;
+    position: relative;
+}
+
+.invitation::before,
+.invitation::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 600px;
+    height: 1px;
+    background: var(--sc-brass);
+    opacity: 0.5;
+}
+.invitation::before { top: 12%; }
+.invitation::after { bottom: 12%; }
+
+.invitation-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 var(--sc-px-5);
+}
+
+.invitation .label {
+    color: var(--sc-brass);
+    margin-bottom: var(--sc-px-3);
+    display: block;
+}
+
+.invitation h2 {
+    color: var(--sc-cream);
+    margin-bottom: var(--sc-px-4);
+    font-style: italic;
+}
+
+.invitation p {
+    color: rgba(252, 250, 245, 0.78);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 56ch;
+    margin: 0 auto var(--sc-px-5);
+}
+
+/* ============================================================
+   PROSE — markdown render styling
+   ============================================================ */
+
+.prose {
+    color: var(--sc-text);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    max-width: 68ch;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+    color: var(--sc-navy);
+    margin-top: var(--sc-px-6);
+    margin-bottom: var(--sc-px-3);
+}
+
+.prose > h1:first-child,
+.prose > h2:first-child,
+.prose > h3:first-child {
+    margin-top: 0;
+}
+
+.prose h1 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-style: italic;
+    font-weight: 400;
+}
+.prose h2 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 500;
+    padding-bottom: var(--sc-px-2);
+    border-bottom: 3px double var(--sc-line);
+}
+.prose h3 { font-size: 1.45rem; font-weight: 500; }
+.prose h4 {
+    font-size: 0.78rem;
+    font-family: var(--sc-font-body);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sc-brass-deep);
+    font-weight: 600;
+}
+
+.prose p { margin-bottom: var(--sc-px-4); }
+
+.prose > p:first-of-type::first-letter {
+    font-family: var(--sc-font-display);
+    font-size: 4em;
+    line-height: 0.85;
+    float: left;
+    padding: 6px 10px 0 0;
+    color: var(--sc-brass-deep);
+    font-weight: 500;
+    font-style: italic;
+}
+
+.prose strong { color: var(--sc-navy); font-weight: 600; }
+.prose em { color: var(--sc-text); font-style: italic; }
+
+.prose a {
+    color: var(--sc-brass-deep);
+    border-bottom: 1px solid var(--sc-brass);
+    transition: all 0.15s;
+}
+.prose a:hover {
+    background: var(--sc-cream);
+    color: var(--sc-navy);
+}
+
+.prose ul,
+.prose ol {
+    margin: var(--sc-px-3) 0 var(--sc-px-4);
+    padding-left: 0;
+}
+
+.prose ul li,
+.prose ol li {
+    position: relative;
+    padding: var(--sc-px-2) 0 var(--sc-px-2) var(--sc-px-5);
+    margin-bottom: var(--sc-px-2);
+    list-style: none;
+}
+
+.prose ul li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    top: var(--sc-px-2);
+    color: var(--sc-brass);
+    font-size: 0.7em;
+}
+
+.prose ol {
+    counter-reset: prose-counter;
+}
+.prose ol li {
+    counter-increment: prose-counter;
+}
+.prose ol li::before {
+    content: counter(prose-counter, lower-roman) '.';
+    position: absolute;
+    left: 0;
+    top: var(--sc-px-2);
+    font-family: var(--sc-font-display);
+    font-style: italic;
+    font-size: 1em;
+    color: var(--sc-brass-deep);
+}
+
+.prose blockquote {
+    border-left: 3px solid var(--sc-brass);
+    background: var(--sc-bg-2);
+    padding: var(--sc-px-4);
+    margin: var(--sc-px-4) 0;
+    color: var(--sc-navy);
+    font-style: italic;
+    font-family: var(--sc-font-display);
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.prose code {
+    font-family: var(--sc-font-mono);
+    font-size: 0.9em;
+    background: var(--sc-bg-2);
+    color: var(--sc-oxblood);
+    padding: 2px 6px;
+}
+
+.prose hr {
+    border: none;
+    text-align: center;
+    margin: var(--sc-px-5) 0;
+}
+.prose hr::before {
+    content: '✦';
+    color: var(--sc-brass);
+    font-size: 1rem;
+}
+
+.prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--sc-px-4) 0;
+    font-family: var(--sc-font-body);
+    font-size: 0.92rem;
+    border-top: 2px solid var(--sc-navy);
+    border-bottom: 2px solid var(--sc-navy);
+}
+.prose table th,
+.prose table td {
+    padding: var(--sc-px-3);
+    border-bottom: 1px solid var(--sc-line);
+    text-align: left;
+}
+.prose table th {
+    color: var(--sc-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--sc-navy);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+    background: var(--sc-bg-2);
+    border-top: 1px solid var(--sc-navy);
+    padding: var(--sc-px-8) 0 var(--sc-px-5);
+    position: relative;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--sc-px-6);
+    margin-bottom: var(--sc-px-6);
+}
+
+.footer-brand h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--sc-px-3);
+    color: var(--sc-navy);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.footer-brand p {
+    color: var(--sc-text-muted);
+    max-width: 38ch;
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.footer-col h4 {
+    font-family: var(--sc-font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--sc-brass-deep);
+    margin-bottom: var(--sc-px-3);
+    font-weight: 600;
+}
+
+.footer-col ul li {
+    margin-bottom: var(--sc-px-2);
+}
+
+.footer-col a {
+    font-size: 0.92rem;
+    color: var(--sc-text-muted);
+    transition: color 0.15s;
+}
+
+.footer-col a:hover {
+    color: var(--sc-navy);
+}
+
+.footer-bottom {
+    padding-top: var(--sc-px-4);
+    border-top: 1px solid var(--sc-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--sc-px-3);
+}
+
+.footer-bottom p {
+    font-family: var(--sc-font-body);
+    font-size: 0.72rem;
+    color: var(--sc-text-dim);
+    letter-spacing: 0.04em;
+}
+
+.footer-disclaimer {
+    font-style: italic;
+    max-width: 60ch;
+    font-family: var(--sc-font-display);
+    font-size: 0.85rem !important;
+}
+
+.afsl-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sc-px-2);
+    background: var(--sc-bg);
+    border: 1px solid var(--sc-line);
+    padding: var(--sc-px-2) var(--sc-px-3);
+    font-family: var(--sc-font-body);
+    font-size: 0.7rem;
+    color: var(--sc-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    position: relative;
+}
+.afsl-badge::before {
+    content: '◆';
+    color: var(--sc-brass);
+    font-size: 0.65em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+    .figures-grid { grid-template-columns: 1fr 1fr; gap: var(--sc-px-3); }
+    .figure { border-right: none; border-bottom: 1px solid var(--sc-line); padding-bottom: var(--sc-px-4); }
+    .figure:nth-child(2n) { border-right: none; }
+    .people-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--sc-px-5); }
+    .tensions-list ul { grid-template-columns: 1fr; }
+    .service-row { grid-template-columns: 50px 1fr; }
+    .service-meta { grid-column: 2; text-align: left; }
+    .chairman-letter { padding: var(--sc-px-5); }
+}
+
+@media (max-width: 640px) {
+    .nav { display: none; }
+    .figures-grid { grid-template-columns: 1fr; }
+    .figure { border-right: none; border-bottom: 1px solid var(--sc-line); }
+    .footer-grid { grid-template-columns: 1fr; }
+}

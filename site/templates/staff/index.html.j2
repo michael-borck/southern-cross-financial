@@ -1,0 +1,34 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Staff portal — Southern Cross Financial{% endblock %}
+
+{% block content %}
+<section class="section-pad">
+    <div class="wrap">
+        <p class="eyebrow">Staff portal / Internal</p>
+        <h1 style="margin-bottom: var(--sc-px-5); font-style: italic;">Welcome back.</h1>
+        <p class="lead" style="font-size: 1.2rem; margin-bottom: var(--sc-px-6);">Quick links to the registers, documents, and people you work with every day.</p>
+
+        <div class="people-grid">
+            <a href="/staff/directory.html" class="person" style="text-decoration: none;">
+                <div class="person-portrait" style="font-size: 1.6rem;">I</div>
+                <h3>Directory</h3>
+                <p class="person-role">Portal 01</p>
+                <p class="person-bio">Find a colleague, reach the right adviser, or chat with our embedded assistants.</p>
+            </a>
+            <a href="/staff/documents.html" class="person" style="text-decoration: none;">
+                <div class="person-portrait" style="font-size: 1.6rem;">II</div>
+                <h3>Documents</h3>
+                <p class="person-role">Portal 02</p>
+                <p class="person-bio">Financial planning process, client onboarding checklist, SMSF guides, and the conflicts policy.</p>
+            </a>
+            <a href="#" class="person" style="text-decoration: none;">
+                <div class="person-portrait" style="font-size: 1.6rem;">III</div>
+                <h3>Compliance register</h3>
+                <p class="person-role">Portal 03</p>
+                <p class="person-bio">Adviser CPD records, conflicts disclosures, and the gifts and benefits register. Coming soon.</p>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

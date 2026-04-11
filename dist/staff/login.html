@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — Southern Cross Financial</title>
+    <title>Staff login — Southern Cross Financial</title>
     <meta name="description" content="Boutique Western Australian wealth management, financial planning, and corporate advisory firm. AFSL holder serving high-net-worth clients since 2011.">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     <link rel="stylesheet" href="/styles/main.css">
@@ -27,7 +27,7 @@
                 <a href="/about.html" class="">About</a>
                 <a href="/services.html" class="">Services</a>
                 <a href="/careers.html" class="">Careers</a>
-                <a href="/contact.html" class="active">Contact</a>
+                <a href="/contact.html" class="">Contact</a>
                 <a href="/contact.html" class="nav-cta">Arrange a meeting</a>
             </nav>
         </div>
@@ -36,48 +36,17 @@
     <main>
 <section class="section-pad text-center">
     <div class="wrap-narrow">
-        <p class="eyebrow">Contact</p>
-        <h1 style="margin-bottom: var(--sc-px-5); font-style: italic;">By appointment.</h1>
-        <p class="lead" style="margin: 0 auto; font-size: 1.3rem;">We meet new clients by introduction or referral and respond to every enquiry personally. Office hours are Monday to Friday, 09:00 to 17:00 AWST.</p>
-        <hr class="rule-double" style="max-width: 200px; margin-left: auto; margin-right: auto; margin-top: var(--sc-px-6);">
-    </div>
-</section>
+        <p class="eyebrow">Staff portal</p>
+        <h1 style="margin-bottom: var(--sc-px-5); font-style: italic;">Sign in.</h1>
+        <p class="lead" style="margin: 0 auto var(--sc-px-6);">Southern Cross staff and advisers only. Enter your work email and we will send you a 6-digit access code.</p>
 
-<section class="section-pad" style="background: var(--sc-bg-2); border-top: 1px solid var(--sc-line); border-bottom: 1px solid var(--sc-line);">
-    <div class="wrap">
-        <div class="people-grid">
-            <article class="person">
-                <div class="person-portrait" style="font-size: 1.6rem;">I</div>
-                <h3>Visit us</h3>
-                <p class="person-role">By appointment</p>
-                <p class="person-bio" style="text-align: center;">Level 22, 100 St Georges Terrace<br>Perth WA 6000</p>
-                <p style="font-family: var(--sc-font-display); font-style: italic; color: var(--sc-brass-deep); text-align: center; margin-top: var(--sc-px-3); font-size: 1.1rem;">+61 8 9000 0000</p>
-            </article>
-            <article class="person">
-                <div class="person-portrait" style="font-size: 1.6rem;">II</div>
-                <h3>Write to us</h3>
-                <p class="person-role">General enquiries</p>
-                <p class="person-bio" style="text-align: center;">enquiries@southerncrossfinancial.com.au</p>
-                <p style="font-family: var(--sc-font-display); font-style: italic; color: var(--sc-brass-deep); text-align: center; margin-top: var(--sc-px-3); font-size: 1rem;">Replied within two business days</p>
-            </article>
-            <article class="person">
-                <div class="person-portrait" style="font-size: 1.6rem;">III</div>
-                <h3>Existing clients</h3>
-                <p class="person-role">Adviser direct</p>
-                <p class="person-bio" style="text-align: center;">Please contact your nominated adviser directly, or call our reception team for a callback.</p>
-                <p style="font-family: var(--sc-font-display); font-style: italic; color: var(--sc-brass-deep); text-align: center; margin-top: var(--sc-px-3); font-size: 1rem;">+61 8 9000 0001</p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<section class="section-pad">
-    <div class="wrap-narrow">
-        <p class="eyebrow">Disclosures</p>
-        <h2 style="margin-bottom: var(--sc-px-4); font-style: italic;">A note on regulation.</h2>
-        <p style="color: var(--sc-text-muted); font-size: 1.1rem; line-height: 1.85;">
-            Southern Cross Financial Pty Ltd holds an Australian Financial Services Licence and is regulated by ASIC. Before engaging our services, prospective clients should review our <a href="#" style="color: var(--sc-brass-deep); border-bottom: 1px solid var(--sc-brass);">Financial Services Guide</a>, which sets out the services we provide, the fees we charge, and our complaint-handling process. The information on this site is general in nature and does not constitute personal financial advice.
-        </p>
+        <form id="login-form" style="max-width: 480px; margin: 0 auto; display: grid; gap: var(--sc-px-3); border: 1px solid var(--sc-line); padding: var(--sc-px-5); background: var(--sc-bg); position: relative;">
+            <div style="position: absolute; inset: 6px; border: 1px solid var(--sc-line); pointer-events: none;"></div>
+            <label class="label" for="email" style="text-align: left;">Work email</label>
+            <input type="email" id="email" name="email" required placeholder="firstname.lastname@southerncrossfinancial.com.au" style="padding: var(--sc-px-3); background: var(--sc-bg-2); border: 1px solid var(--sc-line-2); color: var(--sc-text); font-family: var(--sc-font-body);">
+            <button type="submit" class="btn btn-primary btn-arrow">Send access code</button>
+            <p class="label" style="margin-top: var(--sc-px-2); text-align: left; color: var(--sc-text-dim);">Authentication coming soon — placeholder for the WorkReady simulation.</p>
+        </form>
     </div>
 </section>
     </main>

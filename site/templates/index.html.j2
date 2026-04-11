@@ -1,0 +1,131 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Southern Cross Financial — Your Wealth, Our Commitment{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-inner">
+        <p class="hero-eyebrow">Established <span style="font-family: var(--sc-font-display); font-style: italic; letter-spacing: 0;">{{ profile.founded or 2011 }}</span></p>
+
+        <svg class="hero-star" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+            <path d="M20 2 L23 17 L38 20 L23 23 L20 38 L17 23 L2 20 L17 17 Z"/>
+        </svg>
+
+        <h1>
+            Your wealth,<br>
+            <em>our</em> <span class="ampersand">&amp;</span> <em>commitment.</em>
+        </h1>
+
+        <p class="hero-tagline">{{ company.tagline or "Your wealth, our commitment." }} A boutique Perth wealth management and advisory firm with $2.1 billion under advice and 1,200 client relationships, many of which we have held for the better part of a decade.</p>
+
+        <div class="hero-cta">
+            <a href="/services.html" class="btn btn-primary btn-arrow">Our services</a>
+            <a href="/contact.html" class="btn btn-ghost btn-arrow">Arrange a meeting</a>
+        </div>
+    </div>
+</section>
+
+<section class="figures">
+    <div class="figures-inner">
+        <div class="figures-header">
+            <span class="label">/&nbsp;&nbsp;The firm in figures&nbsp;&nbsp;/</span>
+            <h2>By the numbers, FY26.</h2>
+        </div>
+
+        <div class="figures-grid">
+            <div class="figure">
+                <div class="figure-label">Funds under advice</div>
+                <div class="figure-value">$2.1<span class="figure-suffix">b</span></div>
+                <div class="figure-foot">across all client portfolios</div>
+            </div>
+            <div class="figure">
+                <div class="figure-label">Active client relationships</div>
+                <div class="figure-value">1,200</div>
+                <div class="figure-foot">individuals, families, businesses</div>
+            </div>
+            <div class="figure">
+                <div class="figure-label">Net Promoter Score</div>
+                <div class="figure-value">+62</div>
+                <div class="figure-foot">measured quarterly</div>
+            </div>
+            <div class="figure">
+                <div class="figure-label">ASIC enforcement actions</div>
+                <div class="figure-value">0</div>
+                <div class="figure-foot">since incorporation</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-pad">
+    <div class="wrap">
+        <div class="section-header">
+            <p class="eyebrow">What we do</p>
+            <h2>Six disciplines, one practice.</h2>
+            <p class="lead">Wealth management, financial planning, lending, risk, advisory, and the special needs of mining executives whose remuneration packages don't fit a textbook. Every engagement begins with a conversation.</p>
+        </div>
+
+        <div class="services-list">
+            {% for svc in (profile.services or [])[:6] %}
+            <div class="service-row">
+                <div class="service-num">{{ ['I','II','III','IV','V','VI','VII','VIII'][loop.index0] }}</div>
+                <div>
+                    <div class="service-title">{{ svc }}</div>
+                    <p class="service-desc">Delivered through a personal adviser relationship with quarterly review meetings, supported by our compliance and research teams.</p>
+                </div>
+                <div class="service-meta">By appointment</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <p style="text-align: center; margin-top: var(--sc-px-5);">
+            <a href="/services.html" class="btn btn-ghost btn-arrow">Read more about our services</a>
+        </p>
+    </div>
+</section>
+
+<section class="section-pad" style="background: var(--sc-bg-2); border-top: 1px solid var(--sc-line); border-bottom: 1px solid var(--sc-line);">
+    <div class="wrap">
+        <div class="section-header">
+            <p class="eyebrow">Where the firm stands</p>
+            <h2>The compliance crossroads.</h2>
+        </div>
+
+        <div class="chairman-letter">
+            <div class="chairman-letter-inner">
+                <span class="label">/&nbsp;&nbsp;A note from the Managing Director&nbsp;&nbsp;/</span>
+                <h3>{{ scenario.name or "The Compliance Crossroads" }}</h3>
+                <p>{{ (scenario.description or "")|trim }}</p>
+
+                {% if scenario.key_tensions %}
+                <div class="tensions-list">
+                    <p class="tensions-list-header">Six matters before us:</p>
+                    <ul>
+                        {% for tension in scenario.key_tensions[:6] %}
+                        <li>{{ tension }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <div class="signature">
+                    <div class="signature-name">G. Morrison</div>
+                    <div class="signature-role">Managing Director</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="invitation">
+    <div class="invitation-inner">
+        <span class="label">/&nbsp;&nbsp;An invitation&nbsp;&nbsp;/</span>
+        <h2>If you would like to begin a conversation.</h2>
+        <p>Our advisers meet new clients by introduction or referral. We do not run mass-market campaigns. If you believe our practice may suit your circumstances, write to us — we will respond personally within two business days.</p>
+        <div class="hero-cta">
+            <a href="/contact.html" class="btn btn-brass btn-arrow">Arrange a meeting</a>
+            <a href="/careers.html" class="btn btn-ghost btn-arrow" style="color: var(--sc-cream); border-color: rgba(212, 184, 122, 0.4);">View careers</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

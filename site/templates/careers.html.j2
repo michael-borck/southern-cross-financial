@@ -1,0 +1,74 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Careers — Southern Cross Financial{% endblock %}
+
+{% block content %}
+<section class="section-pad text-center">
+    <div class="wrap-narrow">
+        <p class="eyebrow">Careers / FY26 intake</p>
+        <h1 style="margin-bottom: var(--sc-px-5); font-style: italic;">A profession, not a job.</h1>
+        <p class="lead" style="margin: 0 auto; font-size: 1.3rem;">Fifty-five colleagues. Twenty-two financial advisers. One commitment to building careers — not filling seats. Every hire we make is intended to be here in five years.</p>
+        <hr class="rule-double" style="max-width: 200px; margin-left: auto; margin-right: auto; margin-top: var(--sc-px-6);">
+    </div>
+</section>
+
+<section class="section-pad-sm" style="background: var(--sc-bg-2); border-top: 1px solid var(--sc-line); border-bottom: 1px solid var(--sc-line);">
+    <div class="wrap">
+        <div class="section-header">
+            <p class="eyebrow">Open positions</p>
+            <h2>{{ jobs|length }} positions open.</h2>
+            <p class="lead">All positions are based in our Perth office. Most include study support and a structured pathway through professional certification.</p>
+        </div>
+
+        <div class="services-list">
+            {% for job in jobs %}
+            <div class="service-row">
+                <div class="service-num">{{ ['I','II','III','IV','V','VI','VII','VIII'][loop.index0] }}</div>
+                <div>
+                    <div class="service-title" style="font-size: 1.35rem;">{{ job.title }}</div>
+                    <p class="service-desc" style="margin-top: var(--sc-px-1);"><em>{{ job.department }}</em> &nbsp;·&nbsp; reports to {{ job.reports_to or "—" }}</p>
+                    <p class="service-desc" style="margin-top: var(--sc-px-2);">{{ (job.brief or job.summary or "")[:220] }}{% if (job.brief or job.summary or "")|length > 220 %}…{% endif %}</p>
+                </div>
+                <div class="service-meta">
+                    <div>{{ job.employment_type or "Full-time" }}</div>
+                    <div style="margin-top: var(--sc-px-2);">
+                        <a href="/careers/{{ job.slug }}.html" class="btn btn-ghost btn-arrow" style="font-size: 0.7rem; padding: var(--sc-px-2) var(--sc-px-3);">Read</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section-pad">
+    <div class="wrap">
+        <div class="section-header">
+            <p class="eyebrow">The hiring process</p>
+            <h2>Three meetings.</h2>
+            <p class="lead">A small firm cannot afford to hire wrong. We take the time to be sure — and we expect you to do the same.</p>
+        </div>
+
+        <div class="people-grid">
+            <article class="person">
+                <div class="person-portrait" style="font-size: 1.6rem;">I</div>
+                <h3>Application</h3>
+                <p class="person-role">Step 01</p>
+                <p class="person-bio">A CV and a cover letter, in your own words. We read both. We respond within five business days regardless of outcome.</p>
+            </article>
+            <article class="person">
+                <div class="person-portrait" style="font-size: 1.6rem;">II</div>
+                <h3>Interview</h3>
+                <p class="person-role">Step 02</p>
+                <p class="person-bio">An hour with the hiring manager and one of the firm's principals. We will discuss the work, your interest in financial services, and your professional aspirations.</p>
+            </article>
+            <article class="person">
+                <div class="person-portrait" style="font-size: 1.6rem;">III</div>
+                <h3>Offer</h3>
+                <p class="person-role">Step 03</p>
+                <p class="person-bio">References, then a written offer including salary, study support, and professional development plan. Decisions within ten business days of the second meeting.</p>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}

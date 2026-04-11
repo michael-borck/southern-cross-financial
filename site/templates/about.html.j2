@@ -1,0 +1,70 @@
+{% extends "base.html.j2" %}
+
+{% block title %}About — Southern Cross Financial{% endblock %}
+
+{% block content %}
+<section class="section-pad text-center">
+    <div class="wrap-narrow">
+        <p class="eyebrow">About the firm</p>
+        <h1 style="margin-bottom: var(--sc-px-5); font-style: italic;">A practice built on conversations.</h1>
+        <p class="lead" style="margin: 0 auto; font-size: 1.3rem;">Founded in {{ profile.founded or 2011 }} by Greg Morrison after a long career in institutional and private banking. Today, fifty-five colleagues across wealth management, financial planning, lending, and corporate advisory.</p>
+        <hr class="rule-double" style="max-width: 200px; margin-left: auto; margin-right: auto; margin-top: var(--sc-px-6);">
+    </div>
+</section>
+
+<section class="section-pad" style="background: var(--sc-bg-2); border-top: 1px solid var(--sc-line); border-bottom: 1px solid var(--sc-line);">
+    <div class="wrap">
+        <div class="section-header">
+            <p class="eyebrow">The firm</p>
+            <h2>What we are.</h2>
+            <p class="lead">{{ (profile.description or "")|trim }}</p>
+        </div>
+
+        {% if profile.key_facts %}
+        <div class="services-list" style="margin-top: var(--sc-px-6);">
+            {% for fact in profile.key_facts[:7] %}
+            <div class="service-row">
+                <div class="service-num">{{ ['I','II','III','IV','V','VI','VII','VIII'][loop.index0] }}</div>
+                <div>
+                    <div class="service-title" style="font-size: 1.15rem;">{{ fact }}</div>
+                </div>
+                <div class="service-meta">As at FY26</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section-pad">
+    <div class="wrap">
+        <div class="section-header">
+            <p class="eyebrow">The principals</p>
+            <h2>Who you would meet.</h2>
+            <p class="lead">A small partnership of advisers and operating principals. Most clients meet the same person for years.</p>
+        </div>
+
+        <div class="people-grid">
+            {% for emp in employees if emp.tier == 'executive' %}
+            <article class="person">
+                <div class="person-portrait">{{ emp.name[0] }}</div>
+                <h3>{{ emp.name }}</h3>
+                <p class="person-role">{{ emp.role }}</p>
+                <p class="person-bio">{{ (emp.background or "")[:240] }}{% if (emp.background or "")|length > 240 %}…{% endif %}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="invitation">
+    <div class="invitation-inner">
+        <span class="label">/&nbsp;&nbsp;An invitation&nbsp;&nbsp;/</span>
+        <h2>For a private conversation.</h2>
+        <p>We are always pleased to meet thoughtful prospective clients and colleagues. Write to us through the contact page and we will respond personally.</p>
+        <div class="hero-cta">
+            <a href="/contact.html" class="btn btn-brass btn-arrow">Get in touch</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

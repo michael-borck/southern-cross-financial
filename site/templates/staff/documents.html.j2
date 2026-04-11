@@ -1,0 +1,45 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Staff documents — Southern Cross Financial{% endblock %}
+
+{% block content %}
+<section class="section-pad">
+    <div class="wrap">
+        <p class="eyebrow">Staff portal / Documents</p>
+        <h1 style="margin-bottom: var(--sc-px-5); font-style: italic;">Documents & policies.</h1>
+        <p class="lead" style="font-size: 1.2rem; margin-bottom: var(--sc-px-6);">Current versions only. Earlier versions are archived in the document management system and available on request from the compliance team.</p>
+
+        {% if docs.support %}
+        <h2 style="margin-top: var(--sc-px-6); margin-bottom: var(--sc-px-4); font-style: italic;">Practice guides</h2>
+        <div class="services-list">
+            {% for doc in docs.support %}
+            <div class="service-row">
+                <div class="service-num">{{ ['I','II','III','IV','V','VI'][loop.index0] }}</div>
+                <div>
+                    <div class="service-title" style="font-size: 1.2rem;">{{ doc.get('title', doc.slug.replace('-', ' ').title()) }}</div>
+                    <p class="service-desc">{{ (doc.body or doc.brief or "")[:200] }}{% if (doc.body or doc.brief or "")|length > 200 %}…{% endif %}</p>
+                </div>
+                <div class="service-meta">Support</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if docs.policy %}
+        <h2 style="margin-top: var(--sc-px-8); margin-bottom: var(--sc-px-4); font-style: italic;">Policies</h2>
+        <div class="services-list">
+            {% for doc in docs.policy %}
+            <div class="service-row">
+                <div class="service-num">{{ ['I','II','III','IV','V','VI'][loop.index0] }}</div>
+                <div>
+                    <div class="service-title" style="font-size: 1.2rem;">{{ doc.get('title', doc.slug.replace('-', ' ').title()) }}</div>
+                    <p class="service-desc">{{ (doc.body or doc.brief or "")[:200] }}{% if (doc.body or doc.brief or "")|length > 200 %}…{% endif %}</p>
+                </div>
+                <div class="service-meta">Policy</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Staff directory — Southern Cross Financial{% endblock %}
+
+{% block content %}
+<section class="section-pad">
+    <div class="wrap">
+        <p class="eyebrow">Staff portal / Directory</p>
+        <h1 style="margin-bottom: var(--sc-px-5); font-style: italic;">Who's who.</h1>
+        <p class="lead" style="font-size: 1.2rem; margin-bottom: var(--sc-px-6);">Principals, managers, and senior advisers. Select any name for their profile and to start an internal conversation.</p>
+
+        <div class="people-grid">
+            {% for emp in employees %}
+            <article class="person">
+                <div class="person-portrait">{{ emp.name[0] }}</div>
+                <h3>{{ emp.name }}</h3>
+                <p class="person-role">{{ emp.role }}</p>
+                <p class="person-bio">{{ (emp.background or "")[:180] }}{% if (emp.background or "")|length > 180 %}…{% endif %}</p>
+                <hr class="rule-brass" style="margin: var(--sc-px-3) auto;">
+                <p class="label" style="font-size: 0.7rem;">Chat assistant — coming soon</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

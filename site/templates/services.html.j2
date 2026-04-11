@@ -1,0 +1,94 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Services — Southern Cross Financial{% endblock %}
+
+{% block content %}
+<section class="section-pad text-center">
+    <div class="wrap-narrow">
+        <p class="eyebrow">Our services</p>
+        <h1 style="margin-bottom: var(--sc-px-5); font-style: italic;">Six disciplines, one practice.</h1>
+        <p class="lead" style="margin: 0 auto; font-size: 1.3rem;">Each service is delivered through a personal adviser relationship — supported by our research, compliance, and administration teams.</p>
+        <hr class="rule-double" style="max-width: 200px; margin-left: auto; margin-right: auto; margin-top: var(--sc-px-6);">
+    </div>
+</section>
+
+<section class="section-pad-sm">
+    <div class="wrap">
+        <div class="services-list">
+            {% for svc in (profile.services or [])[:6] %}
+            <div class="service-row">
+                <div class="service-num">{{ ['I','II','III','IV','V','VI','VII','VIII'][loop.index0] }}</div>
+                <div>
+                    <div class="service-title">{{ svc }}</div>
+                    <p class="service-desc">Personal adviser relationship with quarterly portfolio review meetings, annual strategy review, and ad-hoc consultation as your circumstances change.</p>
+                </div>
+                <div class="service-meta">By appointment</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="figures">
+    <div class="figures-inner">
+        <div class="figures-header">
+            <span class="label">/&nbsp;&nbsp;Practice metrics&nbsp;&nbsp;/</span>
+            <h2>The shape of the practice.</h2>
+        </div>
+
+        <div class="figures-grid">
+            <div class="figure">
+                <div class="figure-label">Funds under advice</div>
+                <div class="figure-value">$2.1<span class="figure-suffix">b</span></div>
+                <div class="figure-foot">across all clients</div>
+            </div>
+            <div class="figure">
+                <div class="figure-label">Financial advisers</div>
+                <div class="figure-value">22</div>
+                <div class="figure-foot">all CFP-qualified</div>
+            </div>
+            <div class="figure">
+                <div class="figure-label">Average relationship</div>
+                <div class="figure-value">8<span class="figure-suffix">yrs</span></div>
+                <div class="figure-foot">client tenure</div>
+            </div>
+            <div class="figure">
+                <div class="figure-label">Net Promoter Score</div>
+                <div class="figure-value">+62</div>
+                <div class="figure-foot">measured quarterly</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-pad">
+    <div class="wrap">
+        <div class="section-header">
+            <p class="eyebrow">How we work</p>
+            <h2>Three commitments.</h2>
+            <p class="lead">Process matters as much as judgment. These commitments shape every engagement we accept.</p>
+        </div>
+
+        <div class="people-grid">
+            <article class="person">
+                <div class="person-portrait" style="font-size: 1.6rem;">I</div>
+                <h3>Personal advice.</h3>
+                <p class="person-role">Commitment 01</p>
+                <p class="person-bio">Every client has a named adviser. We do not rotate accounts and we do not hand you to a junior. The person you meet is the person responsible.</p>
+            </article>
+            <article class="person">
+                <div class="person-portrait" style="font-size: 1.6rem;">II</div>
+                <h3>Conflict-free.</h3>
+                <p class="person-role">Commitment 02</p>
+                <p class="person-bio">Our advisers are paid on salary plus practice profit — never on product commissions. Recommendations follow your interests, not ours.</p>
+            </article>
+            <article class="person">
+                <div class="person-portrait" style="font-size: 1.6rem;">III</div>
+                <h3>Documented in writing.</h3>
+                <p class="person-role">Commitment 03</p>
+                <p class="person-bio">Every recommendation is captured in a Statement of Advice, with the reasoning, the alternatives considered, and the costs disclosed. You keep a copy.</p>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}
