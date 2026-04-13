@@ -308,6 +308,29 @@ documents:
     title: "Privacy and Client Data Protection Policy"
     brief: "How the firm collects, stores, and uses client information under the Privacy Act and AFSL obligations"
 
+task_templates:
+  - title: "Client portfolio summary update"
+    difficulty: "easy"
+    discipline: "finance"
+    estimated_hours: 3
+    brief: "Draft a quarterly client portfolio summary \u2014 performance, allocation, brief commentary."
+    description: |
+      A client is due their quarterly portfolio update. Draft the summary covering: overall portfolio performance vs benchmark, current asset allocation, any material changes since last quarter, and 2-3 short commentary points the adviser can personalise before sending. Keep the tone plain and confident — not salesy, not alarmist. This client has been with us for 8 years.
+  - title: "Investment research brief \u2014 emerging sector"
+    difficulty: "medium"
+    discipline: "finance"
+    estimated_hours: 6
+    brief: "Produce an investment research brief on an emerging sector \u2014 drivers, risks, 2-3 investable ideas."
+    description: |
+      The investment committee wants a research brief on an emerging sector (pick one: battery metals, ageing-care tech, or Australian agritech). Cover: the key demand drivers and how sustainable they are, the main risks (regulatory, cyclical, execution), 2-3 investable ideas with brief rationale, and what would change your view. Keep it under 4 pages. The committee reads for signal, not volume.
+  - title: "High-net-worth client advisory memo"
+    difficulty: "hard"
+    discipline: "finance"
+    estimated_hours: 8
+    brief: "Draft an advisory memo for a high-net-worth client considering a major portfolio restructure ahead of retirement."
+    description: |
+      A long-standing high-net-worth client is 18 months from retirement and considering a major portfolio restructure — shifting more toward income, reducing concentration in one Australian bank stock they've held for 25 years, and setting up a structure for intergenerational transfer. Draft an advisory memo covering: (1) the strategic case for and against the restructure, (2) the tax implications of exiting the concentrated position (including CGT — run realistic numbers), (3) a recommended sequence of actions over the next 18 months, and (4) the non-financial considerations (family, legacy, risk tolerance now vs 25 years ago). This client trusts the firm. Don't betray that with a generic template.
+
 jobs:
   - title: "Paraplanner"
     department: "Financial Planning"
