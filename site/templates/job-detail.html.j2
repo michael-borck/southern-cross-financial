@@ -56,18 +56,40 @@
     </div>
 </section>
 
-<section class="invitation">
-    <div class="invitation-inner">
-        <span class="label">/&nbsp;&nbsp;If this position suits you&nbsp;&nbsp;/</span>
-        <h2>We would like to hear from you.</h2>
-        <p>Submit your CV and a short cover letter. We read every application and respond personally within five business days.</p>
-        <div class="hero-cta">
-            {% if company_url %}
-            <a href="{{ company_url }}" class="btn btn-brass btn-arrow">Apply via WorkReady</a>
-            {% else %}
-            <a href="/contact.html" class="btn btn-brass btn-arrow">Get in touch</a>
-            {% endif %}
-        </div>
+<section class="apply-section" id="apply">
+    <div class="wrap-narrow">
+        <p class="eyebrow">Apply for this role</p>
+        <h2 style="font-style: italic;">We would like to hear from you.</h2>
+        <p class="lead">Submit your CV and a short cover letter. We read every application and respond personally within five business days.</p>
+
+        <form id="apply-form" class="apply-form" data-api-base="https://workready-api.eduserver.au">
+            <input type="hidden" name="posting_id" value="">
+            <input type="hidden" name="job_title" value="{{ job.title }}">
+            <div>
+                <label for="applicant_name">Full name <span class="apply-required">*</span></label>
+                <input type="text" name="applicant_name" id="applicant_name" required>
+            </div>
+            <div>
+                <label for="applicant_email">Email address <span class="apply-required">*</span></label>
+                <input type="email" name="applicant_email" id="applicant_email" required placeholder="firstname.lastname@student.curtin.edu.au">
+            </div>
+            <div>
+                <label for="cover_letter">Cover letter</label>
+                <textarea name="cover_letter" id="cover_letter" rows="5" placeholder="Tell us why you're a good fit for this role…"></textarea>
+            </div>
+            <div>
+                <label for="resume">Resume (PDF) <span class="apply-required">*</span></label>
+                <input type="file" name="resume" id="resume" accept=".pdf" required>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-brass btn-arrow">Submit application</button>
+            </div>
+            <div id="apply-result" class="apply-result"></div>
+        </form>
     </div>
 </section>
+{% endblock %}
+
+{% block head_extra %}
+<script src="/scripts/apply.js" defer></script>
 {% endblock %}
