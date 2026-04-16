@@ -16,6 +16,7 @@ jinja2, and markdown are pulled in via the shebang.
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import sys
@@ -235,6 +236,28 @@ def build():
         "year": 2026,
     }
 
+    # Chatbot embed — reads from central config or env var
+    chatbot_embed_id = os.environ.get("CHATBOT_EMBED_ID", "")
+    chatbot_base_api_url = ""
+    chatbot_widget_src = ""
+
+    if not chatbot_embed_id:
+        # Try central config file
+        embeds_file = Path(os.environ.get(
+            "CHATBOT_EMBEDS_FILE",
+            str(ROOT.parent / "workready-deploy" / "chatbot-embeds.json"),
+        ))
+        if embeds_file.is_file():
+            embeds_data = json.loads(embeds_file.read_text(encoding="utf-8"))
+            company_slug = jobs_data.get("company_slug", ROOT.name)
+            chatbot_embed_id = embeds_data.get("embeds", {}).get(company_slug, "")
+            chatbot_base_api_url = embeds_data.get("base_api_url", "")
+            chatbot_widget_src = embeds_data.get("widget_src", "")
+
+    ctx["chatbot_embed_id"] = chatbot_embed_id
+    ctx["chatbot_base_api_url"] = chatbot_base_api_url
+    ctx["chatbot_widget_src"] = chatbot_widget_src
+
     env = setup_jinja()
 
     # --- Public pages ---
@@ -292,7 +315,6 @@ def serve():
     """Build then serve the dist directory on :8004 for local preview."""
     import http.server
     import socketserver
-    import os
 
     build()
     os.chdir(DIST_DIR)
